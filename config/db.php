@@ -3,21 +3,21 @@
 ini_set('display_errors', 0);
 error_reporting(E_ALL);
 
-// Configuración de la base de datos
-$db_host = '127.0.0.1';
-$db_user = 'root';
-$db_pass = '123456'; // Ajusta la clave si en tu MariaDB es diferente o vacía ''
-$db_name = 'manihabs_db';
+// Configuración de la base de datos usando variables de entorno
+// Si estás en Render, usará lo configurado en la plataforma. 
+// Si estás en local, usará tus datos por defecto.
+$db_host = getenv('DB_HOST') ?: '127.0.0.1';
+$db_user = getenv('DB_USER') ?: 'root';
+$db_pass = getenv('DB_PASSWORD') !== false ? getenv('DB_PASSWORD') : '123456'; 
+$db_name = getenv('DB_NAME') ?: 'manihabs_db';
 
 mysqli_report(MYSQLI_REPORT_OFF);
 
 // Crear la conexión centralizada
 $conn = @new mysqli($db_host, $db_user, $db_pass, $db_name);
 
-if ($conn->connect_error) {
-    $conn = @new mysqli('localhost', $db_user, $db_pass, $db_name);
-}
-
+// Eliminamos el bloque que intentaba reconectar a 'localhost' 
+// porque es el que genera el error "No such file or directory" en Render.
 if ($conn->connect_error) {
     die("Error de conexión a la Base de Datos: " . $conn->connect_error);
 }
