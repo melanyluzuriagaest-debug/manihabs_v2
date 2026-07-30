@@ -1,0 +1,390 @@
+:root {
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 70px;
+    --header-height: 65px;
+    --primary-color: #3699FF;
+    --primary-hover: #187DE4;
+    --secondary-color: #E4E6EF;
+    --dark-bg: #1e1e2d;
+    --dark-sidebar-hover: #2b2b40;
+    --body-bg: #f5f8fa;
+    --card-bg: #ffffff;
+    --text-main: #3F4254;
+    --text-muted: #B5B5C3;
+    --border-color: #EBEDF3;
+    --success-color: #1BC5BD;
+    --warning-color: #FFA800;
+    --danger-color: #F64E60;
+    --info-color: #8950FC;
+    --box-shadow: 0px 0px 20px 0px rgba(76, 87, 125, 0.03);
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--body-bg);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Auth / Public Screens (Login & Registro) */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e1e2d 0%, #2b2b40 100%);
+    padding: 1.5rem;
+}
+
+.auth-card {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 440px;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.auth-brand {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-brand h1 {
+    font-size: 1.8rem;
+    color: var(--dark-bg);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.auth-brand p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+/* Layout Principal */
+#app-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.app-sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--dark-bg);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    transition: width var(--transition-speed) ease;
+}
+
+.sidebar-brand {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    gap: 0.75rem;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 1.5rem 0;
+    flex-grow: 1;
+}
+
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1.5rem;
+    color: #a2a3b7;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all var(--transition-speed) ease;
+    gap: 0.75rem;
+}
+
+.sidebar-menu li a:hover,
+.sidebar-menu li.active a {
+    background-color: var(--dark-sidebar-hover);
+    color: #ffffff;
+    border-left: 4px solid var(--primary-color);
+}
+
+.sidebar-menu li a i {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+/* Main Content Wrapper */
+.app-main {
+    margin-left: var(--sidebar-width);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 0;
+    transition: margin-left var(--transition-speed) ease;
+}
+
+/* Header Navbar */
+.app-header {
+    height: var(--header-height);
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+/* Content Area */
+.app-content {
+    padding: 2rem;
+    flex-grow: 1;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Cards & Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.card-stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-stat .stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.card-stat .stat-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+/* Forms & Inputs */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+}
+
+/* Tables */
+.table-container {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+}
+
+.table-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table th {
+    background-color: #FAFAFA;
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.825rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+    font-size: 0.95rem;
+}
+
+.table tbody tr:hover {
+    background-color: #F8F9FA;
+}
+
+/* Badges */
+.badge {
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.badge-pendiente { background-color: #FFF4DE; color: var(--warning-color); }
+.badge-pagado { background-color: #EEE5FF; color: var(--info-color); }
+.badge-entregado { background-color: #E8F8F5; color: var(--success-color); }
+.badge-cancelado { background-color: #FFE2E5; color: var(--danger-color); }
+
+/* Alerts */
+.alert {
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.alert-danger {
+    background-color: #FFE2E5;
+    color: var(--danger-color);
+    border: 1px solid #FCD2D7;
+}
+
+.alert-success {
+    background-color: #E8F8F5;
+    color: #0E6251;
+    border: 1px solid #A3E4D7;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary { background-color: var(--primary-color); color: #ffffff; }
+.btn-primary:hover { background-color: var(--primary-hover); }
+.btn-success { background-color: var(--success-color); color: #ffffff; }
+.btn-success:hover { filter: brightness(0.95); }
+.btn-outline { border: 1px solid var(--border-color); background: transparent; color: var(--text-main); }
+.btn-outline:hover { background: var(--secondary-color); }
+.btn-block { width: 100%; }
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .app-sidebar {
+        width: var(--sidebar-collapsed-width);
+    }
+    .app-sidebar .sidebar-brand span,
+    .app-sidebar .sidebar-menu span {
+        display: none;
+    }
+    .app-main {
+        margin-left: var(--sidebar-collapsed-width);
+    }
+}
+
+@media (max-width: 576px) {
+    .app-content {
+        padding: 1rem;
+    }
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
