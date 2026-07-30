@@ -1,0 +1,11 @@
+# Impide que los visitantes vean la lista de carpetas y archivos
+Options -Indexes
+
+# Oculta información sensible del servidor
+ServerSignature Off
+
+# Deniega el acceso directo a archivos de configuración o de sistema
+<FilesMatch "^\.ht|config">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
